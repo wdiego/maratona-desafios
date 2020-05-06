@@ -7,6 +7,7 @@ COPY ./dist ./dist
 COPY ./node_modules ./node_modules
 COPY ./database.sqlite ./database.sqlite
 COPY ./.env ./.env
+COPY ./public ./public
 
 CMD [ "npm", "run", "start:prod" ]
 

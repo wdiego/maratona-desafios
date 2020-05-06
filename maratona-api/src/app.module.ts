@@ -3,7 +3,8 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MaratonaModule } from './maratona/maratona.module';
-import {ConnectionOptions, DatabaseType} from 'typeorm';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 require('dotenv').config();
 
@@ -23,6 +24,9 @@ require('dotenv').config();
         migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR
       },
    }),
+   ServeStaticModule.forRoot({
+    rootPath: join(__dirname, '..', 'public'),
+  }),
     MaratonaModule
   ],
   controllers: [AppController],
